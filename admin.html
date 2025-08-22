@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel admina — Limitless Web</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .admin-wrap{max-width:1200px;margin:40px auto;padding:0 16px;}
+    .card{background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.06);padding:24px;margin-bottom:24px;}
+    .login-box input{width:100%;padding:10px 12px;margin:6px 0;border:1px solid #ddd;border-radius:10px;}
+    .btn{display:inline-block;padding:10px 16px;border-radius:12px;border:1px solid #ddd;background:#f8f8f8;cursor:pointer}
+    .table{width:100%;border-collapse:separate;border-spacing:0;overflow:auto}
+    .table th,.table td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;vertical-align:top}
+    .muted{color:#666;font-size:.9rem}
+    .tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+    .badge{display:inline-block;background:#eef;border-radius:999px;padding:2px 8px;margin-right:6px;font-size:.8rem}
+    .logout{float:right}
+    @media (prefers-color-scheme: dark) {
+      .card{background:#111;border:1px solid #222;box-shadow:none}
+      .btn{background:#0f0f0f;border-color:#222;color:#ddd}
+      .table th,.table td{border-bottom:1px solid #222}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="Limitless Web — strona główna">
+        <img src="assets/logo.svg" alt="" width="36" height="36" loading="eager">
+        <span>Limitless <strong>Web</strong></span>
+      </a>
+      <nav class="nav" aria-label="Główne">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Otwórz menu">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <ul id="nav-list" class="nav-list">
+          <li><a href="#oferta">Oferta</a></li>
+          <li><a href="#proces">Jak pracujemy</a></li>
+          <li><a href="#realizacje">Realizacje</a></li>
+          <li><a href="#opinie">Opinie</a></li>
+          <li><a href="#cennik">Warianty</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a class="btn btn-primary btn-small" href="#kontakt">Wyceń projekt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="admin-wrap">
+    <div class="card" id="auth-view" hidden>
+      <h2>Logowanie</h2>
+      <p class="muted">Podaj login i hasło: <strong>123</strong> / <strong>123</strong>.</p>
+      <div class="login-box">
+        <label>Login
+          <input id="login" autocomplete="username" placeholder="123">
+        </label>
+        <label>Hasło
+          <input id="password" type="password" autocomplete="current-password" placeholder="123">
+        </label>
+        <button class="btn" id="login-btn">Zaloguj</button>
+      </div>
+    </div>
+
+    <div class="card" id="panel-view" hidden>
+      <h2>Panel administratora
+        <button class="btn logout" id="logout-btn" title="Wyloguj">Wyloguj</button>
+      </h2>
+      <div class="tools">
+        <input id="search" placeholder="Szukaj w zgłoszeniach..." style="flex:1;min-width:220px;padding:10px;border:1px solid #ddd;border-radius:10px">
+        <button class="btn" id="refresh-btn">Odśwież</button>
+        <button class="btn" id="export-btn">Eksport CSV</button>
+      </div>
+      <div id="count" class="muted"></div>
+      <div style="overflow:auto">
+        <table class="table" id="quotes-table">
+          <thead><tr><th>ID</th><th>Data</th><th>Dane</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script src="/admin.js" defer></script>
+</body>
+</html>
